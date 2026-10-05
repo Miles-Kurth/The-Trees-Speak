@@ -520,7 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c00137d6cc341feac4c8bad9278953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  camera: {fileID: 654283671}
+  camera: {fileID: 0}
   moveSpeed: 5
   jumpForce: 5
 --- !u!114 &1007603011
