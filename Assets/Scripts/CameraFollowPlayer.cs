@@ -56,8 +56,8 @@ public class CameraFollowPlayer : MonoBehaviour
         
         // transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
 
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        target.Rotate(Vector3.up, mouseX);
+        // transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        // target.Rotate(Vector3.up, mouseX);
         
         // transform.Rotate(rotateDirection);
         // transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0);
