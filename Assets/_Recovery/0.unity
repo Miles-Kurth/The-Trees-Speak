@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 117494321}
   - component: {fileID: 117494320}
   m_Layer: 5
-  m_Name: Inventory10 (2)
+  m_Name: Inventory30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 174656423}
   - component: {fileID: 174656422}
   m_Layer: 5
-  m_Name: Inventory3 (3)
+  m_Name: Inventory33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -748,7 +748,7 @@ GameObject:
   - component: {fileID: 187060989}
   - component: {fileID: 187060988}
   m_Layer: 5
-  m_Name: Inventory9 (1)
+  m_Name: Inventory19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1908,7 +1908,7 @@ GameObject:
   - component: {fileID: 712807124}
   - component: {fileID: 712807123}
   m_Layer: 5
-  m_Name: Inventory6 (3)
+  m_Name: Inventory36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2133,7 +2133,7 @@ GameObject:
   - component: {fileID: 787194397}
   - component: {fileID: 787194396}
   m_Layer: 5
-  m_Name: Inventory7 (3)
+  m_Name: Inventory37
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2208,7 +2208,7 @@ GameObject:
   - component: {fileID: 815103081}
   - component: {fileID: 815103080}
   m_Layer: 5
-  m_Name: Inventory5 (2)
+  m_Name: Inventory25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2433,7 +2433,7 @@ GameObject:
   - component: {fileID: 900081331}
   - component: {fileID: 900081330}
   m_Layer: 5
-  m_Name: Inventory10 (3)
+  m_Name: Inventory40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2813,7 +2813,7 @@ GameObject:
   - component: {fileID: 1122637407}
   - component: {fileID: 1122637406}
   m_Layer: 5
-  m_Name: Inventory7 (2)
+  m_Name: Inventory27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2888,7 +2888,7 @@ GameObject:
   - component: {fileID: 1132084624}
   - component: {fileID: 1132084623}
   m_Layer: 5
-  m_Name: Inventory6 (2)
+  m_Name: Inventory26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2963,7 +2963,7 @@ GameObject:
   - component: {fileID: 1145956901}
   - component: {fileID: 1145956900}
   m_Layer: 5
-  m_Name: Inventory2 (3)
+  m_Name: Inventory32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3038,7 +3038,7 @@ GameObject:
   - component: {fileID: 1172348186}
   - component: {fileID: 1172348185}
   m_Layer: 5
-  m_Name: Inventory3 (2)
+  m_Name: Inventory23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3051,7 +3051,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172348183}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3113,7 +3113,7 @@ GameObject:
   - component: {fileID: 1173802308}
   - component: {fileID: 1173802307}
   m_Layer: 5
-  m_Name: Inventory9 (2)
+  m_Name: Inventory29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3408,36 +3408,46 @@ MonoBehaviour:
   Inventory8: {fileID: 259342540}
   Inventory9: {fileID: 209627794}
   Inventory10: {fileID: 996435190}
-  Inventory11: {fileID: 0}
-  Inventory12: {fileID: 0}
-  Inventory13: {fileID: 0}
-  Inventory14: {fileID: 0}
-  Inventory15: {fileID: 0}
-  Inventory16: {fileID: 0}
-  Inventory17: {fileID: 0}
-  Inventory18: {fileID: 0}
-  Inventory19: {fileID: 0}
-  Inventory20: {fileID: 0}
-  Inventory21: {fileID: 0}
-  Inventory22: {fileID: 0}
-  Inventory23: {fileID: 0}
-  Inventory24: {fileID: 0}
-  Inventory25: {fileID: 0}
-  Inventory26: {fileID: 0}
-  Inventory27: {fileID: 0}
-  Inventory28: {fileID: 0}
-  Inventory29: {fileID: 0}
-  Inventory30: {fileID: 0}
-  Inventory31: {fileID: 0}
-  Inventory32: {fileID: 0}
-  Inventory33: {fileID: 0}
-  Inventory34: {fileID: 0}
-  Inventory35: {fileID: 0}
-  Inventory36: {fileID: 0}
-  Inventory37: {fileID: 0}
-  Inventory38: {fileID: 0}
-  Inventory39: {fileID: 0}
-  Inventory40: {fileID: 0}
+  Inventory11: {fileID: 1374687868}
+  Inventory12: {fileID: 1208507740}
+  Inventory13: {fileID: 693338011}
+  Inventory14: {fileID: 693112542}
+  Inventory15: {fileID: 1910310808}
+  Inventory16: {fileID: 1213541862}
+  Inventory17: {fileID: 2034186138}
+  Inventory18: {fileID: 2122635829}
+  Inventory19: {fileID: 187060988}
+  Inventory20: {fileID: 1257203351}
+  Inventory21: {fileID: 1275684535}
+  Inventory22: {fileID: 1466189429}
+  Inventory23: {fileID: 1172348185}
+  Inventory24: {fileID: 1462384986}
+  Inventory25: {fileID: 815103080}
+  Inventory26: {fileID: 1132084623}
+  Inventory27: {fileID: 1122637406}
+  Inventory28: {fileID: 1858155305}
+  Inventory29: {fileID: 1173802307}
+  Inventory30: {fileID: 117494320}
+  Inventory31: {fileID: 1929109406}
+  Inventory32: {fileID: 1145956900}
+  Inventory33: {fileID: 174656422}
+  Inventory34: {fileID: 2044829170}
+  Inventory35: {fileID: 1969777932}
+  Inventory36: {fileID: 712807123}
+  Inventory37: {fileID: 787194396}
+  Inventory38: {fileID: 1759284030}
+  Inventory39: {fileID: 1862670759}
+  Inventory40: {fileID: 900081330}
+  Crafting1: {fileID: 0}
+  Crafting2: {fileID: 0}
+  Crafting3: {fileID: 0}
+  Crafting4: {fileID: 0}
+  Crafting5: {fileID: 0}
+  Crafting6: {fileID: 0}
+  Crafting7: {fileID: 0}
+  Crafting8: {fileID: 0}
+  Crafting9: {fileID: 0}
+  Result: {fileID: 0}
 --- !u!114 &1234409819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3488,7 +3498,7 @@ GameObject:
   - component: {fileID: 1257203352}
   - component: {fileID: 1257203351}
   m_Layer: 5
-  m_Name: Inventory10 (1)
+  m_Name: Inventory20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3563,7 +3573,7 @@ GameObject:
   - component: {fileID: 1275684536}
   - component: {fileID: 1275684535}
   m_Layer: 5
-  m_Name: Inventory1 (2)
+  m_Name: Inventory21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3912,7 +3922,7 @@ GameObject:
   - component: {fileID: 1462384987}
   - component: {fileID: 1462384986}
   m_Layer: 5
-  m_Name: Inventory4 (2)
+  m_Name: Inventory24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3987,7 +3997,7 @@ GameObject:
   - component: {fileID: 1466189430}
   - component: {fileID: 1466189429}
   m_Layer: 5
-  m_Name: Inventory2 (2)
+  m_Name: Inventory22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4587,7 +4597,7 @@ GameObject:
   - component: {fileID: 1759284031}
   - component: {fileID: 1759284030}
   m_Layer: 5
-  m_Name: Inventory8 (3)
+  m_Name: Inventory38
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4887,7 +4897,7 @@ GameObject:
   - component: {fileID: 1858155306}
   - component: {fileID: 1858155305}
   m_Layer: 5
-  m_Name: Inventory8 (2)
+  m_Name: Inventory28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4962,7 +4972,7 @@ GameObject:
   - component: {fileID: 1862670760}
   - component: {fileID: 1862670759}
   m_Layer: 5
-  m_Name: Inventory9 (3)
+  m_Name: Inventory39
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5187,7 +5197,7 @@ GameObject:
   - component: {fileID: 1929109407}
   - component: {fileID: 1929109406}
   m_Layer: 5
-  m_Name: Inventory1 (3)
+  m_Name: Inventory31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5262,7 +5272,7 @@ GameObject:
   - component: {fileID: 1969777933}
   - component: {fileID: 1969777932}
   m_Layer: 5
-  m_Name: Inventory5 (3)
+  m_Name: Inventory35
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5412,7 +5422,7 @@ GameObject:
   - component: {fileID: 2044829171}
   - component: {fileID: 2044829170}
   m_Layer: 5
-  m_Name: Inventory4 (3)
+  m_Name: Inventory34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
