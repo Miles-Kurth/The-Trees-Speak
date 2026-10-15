@@ -10,28 +10,30 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float walkSpeed = 100f;
     [SerializeField] public float sprintSpeed = 5.0f;
     [SerializeField] public float jumpForce = 5.0f;
+    [SerializeField] public float rotationSpeed = 10.0f;
     [Range(0f, 1f)] 
     [SerializeField] private float airControlMultiplier = 0.2f;
     
     [Header("Movement Settings")]
     [SerializeField] private Transform groundCheckPoint;
-    [SerializeField] private float groundCheckRadius = 0.3f;
+    [SerializeField] private float groundCheckDistance = 0.1f;
     [SerializeField] private LayerMask groundLayer;
     
     private Rigidbody rb;
+    private Vector3 moveDirection = Vector3.zero;
+    private Vector3 inputVector = Vector3.zero;
     private Vector2 moveInput = Vector2.zero;
     private Vector3 airMomentum = Vector3.zero;
-    private bool isGrounded;
-    private bool wasGroundedLastFrame;
-
-    private Vector3 cameraForward;
-    private Vector3 cameraRight;
     
+    private Collider playerCollider;
+    private bool isGrounded = false;
+    private bool wasGroundedLastFrame;
     
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        playerCollider = GetComponent<CapsuleCollider>();
     }
     
     void Start()
@@ -41,48 +43,54 @@ public class PlayerMovement : MonoBehaviour
 
     void OnMove(InputValue movementValue)
     {
-        Vector2 inputVector = movementValue.Get<Vector2>();
-        moveInput = new Vector3(inputVector.x, 0f, inputVector.y);
-        // moveHorizontal = moveInput.x;
-        // moveVertical = moveInput.y;
+        inputVector = movementValue.Get<Vector2>();
     }
 
     void OnJump(InputValue jumpValue)
     {
         Debug.Log("Jump");
-        rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
+        if (!isGrounded)
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
+        }
+        //detection works, need to make it check if in air
     }
     
     void Update()
     {
-        cameraForward = camera.forward;
-        cameraForward.y = 0;
-        cameraForward.Normalize();
-        cameraRight = camera.right;
-        cameraRight.y = 0;
-        cameraRight.Normalize();
-        
-        
-        
-        
-        Vector3 localMovement = new Vector3(moveInput.x, 0f, moveInput.y);
-        Vector3 worldMovement = transform.TransformDirection(localMovement);
-        
-        
+        CalculateMovementDirection();
+        CheckGroundState();
     }
 
     void FixedUpdate()
     {
-        CheckGroundState();
         MovePlayer();
+        RotatePlayer();
+    }
+
+    void CalculateMovementDirection()
+    {
+        Vector3 camForward = camera.forward;
+        Vector3 camRight = camera.right;
+        
+        camForward.y = 0f;
+        camRight.y = 0f;
+        
+        camForward.Normalize();
+        camRight.Normalize();
+        
+        moveDirection = (camForward * inputVector.y) + (camRight * inputVector.x);
     }
 
     private void CheckGroundState()
     {
         wasGroundedLastFrame = isGrounded;
-        // groundCheckPoint.position = transform.position + new Vector3(0, -1f, 0f);
         
-        isGrounded = Physics.CheckSphere(groundCheckPoint.position, groundCheckRadius, groundLayer);
+        float halfHeight = playerCollider.bounds.extents.y;
+        // Debug.Log(halfHeight + " " + isGrounded);
+        
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, halfHeight + groundCheckDistance, groundLayer);
+        Debug.DrawRay(transform.position, Vector3.down * (halfHeight + groundCheckDistance), Color.red);
 
         if (wasGroundedLastFrame && !isGrounded)
         {
@@ -92,48 +100,18 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        Vector3 moveDirection = cameraForward * moveInput.y + cameraRight * moveInput.x;
-        moveDirection.Normalize();
-        
-        Vector3 targetVelocity;
-
-        if (isGrounded)
-        {
-            if (moveInput.sqrMagnitude < 0.01f)
-            {
-                rb.linearVelocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
-            }
-            
-            targetVelocity = moveDirection * walkSpeed;
-        }
-        else
-        {
-            Vector3 airControlForce = moveInput * (walkSpeed * airControlMultiplier);
-            
-            targetVelocity = airMomentum + airControlForce;
-            
-            targetVelocity = Vector3.ClampMagnitude(targetVelocity, walkSpeed);
-        }
-
-        if (moveInput.sqrMagnitude > 0.01f)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(moveInput.normalized, Vector3.up);
-            // rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, Time.deltaTime * 15f));
-            rb.MoveRotation(rb.rotation * targetRotation);
-        }
-        
-        targetVelocity.y = rb.linearVelocity.y;
-        
+        Vector3 targetVelocity = new Vector3(moveDirection.x * walkSpeed, rb.linearVelocity.y, moveDirection.z * walkSpeed);
         rb.linearVelocity = targetVelocity;
-        
-        transform.rotation *= Quaternion.Euler(0f, targetVelocity.y, 0f);
-        
-        
-        // transform.Translate(moveDirecton * (walkSpeed * (moveSpeed * Time.deltaTime)), Space.World);
-        // rb.AddForce(moveDirection * (walkSpeed * (moveSpeed * Time.deltaTime) ), ForceMode.VelocityChange);
-        // rb.linearVelocity = new Vector3(moveInput.x * walkSpeed, rb.linearVelocity.y, rb.linearVelocity.z);
-        // Vector3 targetPosition = rb.position * moveInput * (walkSpeed * Time.deltaTime);
-        // rb.MovePosition(targetPosition);
     }
+
+    private void RotatePlayer()
+    {
+        if (inputVector.sqrMagnitude > 0.01f && moveDirection != Vector3.zero)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+        }
+    }
+    
+    
 }
