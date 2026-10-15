@@ -14,9 +14,9 @@ public class PlayerMovement : MonoBehaviour
     [Range(0f, 1f)] 
     [SerializeField] private float airControlMultiplier = 0.2f;
     
-    [Header("Movement Settings")]
+    [Header("Ground Check Settings")]
     [SerializeField] private Transform groundCheckPoint;
-    [SerializeField] private float groundCheckDistance = 0.1f;
+    [SerializeField] private float groundCheckDistance = 0.05f;
     [SerializeField] private LayerMask groundLayer;
     
     private Rigidbody rb;
@@ -26,8 +26,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 airMomentum = Vector3.zero;
     
     private Collider playerCollider;
-    private bool isGrounded = false;
-    private bool wasGroundedLastFrame;
+    public bool isGrounded = false;
+    public bool wasGroundedLastFrame;
+    public bool canJump = false;
+    private bool isHoldingJump = false;
     
 
     void Awake()
@@ -46,20 +48,31 @@ public class PlayerMovement : MonoBehaviour
         inputVector = movementValue.Get<Vector2>();
     }
 
-    void OnJump(InputValue jumpValue)
-    {
-        Debug.Log("Jump");
-        if (!isGrounded)
-        {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
-        }
-        //detection works, need to make it check if in air
-    }
+    // public void OnJump(InputAction.CallbackContext context)
+    // {
+    //     // Debug.Log(canJump + " " + isGrounded);
+    //     
+    //     if (context.started)
+    //     {
+    //         isHoldingJump = true;
+    //     }
+    //     else if (context.canceled)
+    //     {
+    //         isHoldingJump = false;
+    //     }
+    //     
+    // }
     
     void Update()
     {
+        // if (isHoldingJump && canJump)
+        // {
+        //     rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
+        //     canJump = false;
+        // }
+        
         CalculateMovementDirection();
-        CheckGroundState();
+        PlayerCheckGroundState();
     }
 
     void FixedUpdate()
@@ -82,9 +95,11 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = (camForward * inputVector.y) + (camRight * inputVector.x);
     }
 
-    private void CheckGroundState()
+    public void PlayerCheckGroundState()
     {
         wasGroundedLastFrame = isGrounded;
+        canJump = isGrounded;
+        
         
         float halfHeight = playerCollider.bounds.extents.y;
         // Debug.Log(halfHeight + " " + isGrounded);
