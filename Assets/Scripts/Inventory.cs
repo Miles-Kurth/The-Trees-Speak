@@ -86,6 +86,10 @@ public class Inventory : MonoBehaviour
     public Button Dev;
 
     public TextMeshProUGUI DevText;
+
+    public Image DevMenu;
+
+    public Image Wood;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -133,6 +137,8 @@ public class Inventory : MonoBehaviour
         Dev.enabled = false;
         Dev.image.enabled = false;
         DevText.enabled = false;
+        DevMenu.enabled = false;
+        Wood.enabled = false;
     }
 
     // Update is called once per frame
@@ -280,6 +286,8 @@ public class Inventory : MonoBehaviour
                 Dev.enabled = false;
                 Dev.image.enabled = false;
                 DevText.enabled = false;
+                DevMenu.enabled = false;
+                Wood.enabled = false;
             }
         }
     }

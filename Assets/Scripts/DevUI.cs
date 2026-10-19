@@ -4,6 +4,8 @@ using UnityEngine.UI;
 public class DevUI : MonoBehaviour
 {
     public Image DevMenu;
+
+    public Image Wood;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +20,14 @@ public class DevUI : MonoBehaviour
 
     public void DevButton()
     {
-        DevMenu.enabled = false;
+        if (DevMenu.enabled)
+        {
+            DevMenu.enabled = false;
+            Wood.enabled = false;
+        }
+        else{
+            DevMenu.enabled = true;
+            Wood.enabled = true;
+        }
     }
 }

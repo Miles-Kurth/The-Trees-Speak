@@ -3800,6 +3800,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
+  isGrounded: 0
+  wasGroundedLastFrame: 0
+  canJump: 0
 --- !u!114 &1007603011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5783,6 +5786,7 @@ MonoBehaviour:
   Result: {fileID: 789412772}
   Dev: {fileID: 490184800}
   DevText: {fileID: 119679633}
+  DevMenu: {fileID: 434637486}
 --- !u!114 &1679967341
 MonoBehaviour:
   m_ObjectHideFlags: 0
