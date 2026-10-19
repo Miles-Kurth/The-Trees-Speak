@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -81,6 +82,14 @@ public class Inventory : MonoBehaviour
     public Image Crafting9;
 
     public Image Result;
+
+    public Button Dev;
+
+    public TextMeshProUGUI DevText;
+
+    public Image DevMenu;
+
+    public Image Wood;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -125,6 +134,11 @@ public class Inventory : MonoBehaviour
         Crafting8.enabled = false;
         Crafting9.enabled = false;
         Result.enabled = false;
+        Dev.enabled = false;
+        Dev.image.enabled = false;
+        DevText.enabled = false;
+        DevMenu.enabled = false;
+        Wood.enabled = false;
     }
 
     // Update is called once per frame
@@ -132,8 +146,11 @@ public class Inventory : MonoBehaviour
     {
         if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
+            // Inventory Opens
             if (Inventory11.enabled == false)
             {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 Heart1.enabled = false;
                 Heart2.enabled = false;
                 Heart3.enabled = false;
@@ -195,9 +212,15 @@ public class Inventory : MonoBehaviour
                 Crafting8.enabled = true;
                 Crafting9.enabled = true;
                 Result.enabled = true;
+                Dev.enabled = true;
+                Dev.image.enabled = true;
+                DevText.enabled = true;
             }
+            // Inventory Closes
             else
             {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
                 Inv.enabled = false;
                 Heart1.enabled = true;
                 Heart2.enabled = true;
@@ -260,6 +283,11 @@ public class Inventory : MonoBehaviour
                 Crafting8.enabled = false;
                 Crafting9.enabled = false;
                 Result.enabled = false;
+                Dev.enabled = false;
+                Dev.image.enabled = false;
+                DevText.enabled = false;
+                DevMenu.enabled = false;
+                Wood.enabled = false;
             }
         }
     }
