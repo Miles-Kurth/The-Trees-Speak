@@ -7,8 +7,8 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("Movement Settings")]
     // [SerializeField] private float moveSpeed = 2.0f;
-    [SerializeField] public float walkSpeed = 100f;
-    [SerializeField] public float sprintSpeed = 5.0f;
+    private float walkSpeed = 5f;
+    private float sprintSpeed = 10f;
     [SerializeField] public float jumpForce = 5.0f;
     [SerializeField] public float rotationSpeed = 10.0f;
     [Range(0f, 1f)] 
@@ -30,12 +30,18 @@ public class PlayerMovement : MonoBehaviour
     public bool wasGroundedLastFrame;
     public bool canJump = false;
     private bool isHoldingJump = false;
+    private bool isSprinting = false;
     
+    private PlayerInput playerInput;
+    private InputAction sprintAction;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<CapsuleCollider>();
+        
+        playerInput = GetComponent<PlayerInput>();
+        sprintAction = playerInput.actions["Sprint"];
     }
     
     void Start()
@@ -47,30 +53,9 @@ public class PlayerMovement : MonoBehaviour
     {
         inputVector = movementValue.Get<Vector2>();
     }
-
-    // public void OnJump(InputAction.CallbackContext context)
-    // {
-    //     // Debug.Log(canJump + " " + isGrounded);
-    //     
-    //     if (context.started)
-    //     {
-    //         isHoldingJump = true;
-    //     }
-    //     else if (context.canceled)
-    //     {
-    //         isHoldingJump = false;
-    //     }
-    //     
-    // }
     
     void Update()
     {
-        // if (isHoldingJump && canJump)
-        // {
-        //     rb.AddForce(Vector2.up * jumpForce, ForceMode.Impulse);
-        //     canJump = false;
-        // }
-        
         CalculateMovementDirection();
         PlayerCheckGroundState();
     }
@@ -102,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
         
         
         float halfHeight = playerCollider.bounds.extents.y;
-        // Debug.Log(halfHeight + " " + isGrounded);
         
         isGrounded = Physics.Raycast(transform.position, Vector3.down, halfHeight + groundCheckDistance, groundLayer);
         Debug.DrawRay(transform.position, Vector3.down * (halfHeight + groundCheckDistance), Color.red);
@@ -115,7 +99,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void MovePlayer()
     {
-        Vector3 targetVelocity = new Vector3(moveDirection.x * walkSpeed, rb.linearVelocity.y, moveDirection.z * walkSpeed);
+        isSprinting = sprintAction.ReadValue<float>() > 0f;
+        float currentSpeed;
+        if (isSprinting) currentSpeed = sprintSpeed;
+        else currentSpeed = walkSpeed;
+        // Debug.Log(isSprinting + "  " + currentSpeed);
+        
+        Vector3 targetVelocity = new Vector3(moveDirection.x * currentSpeed, rb.linearVelocity.y, moveDirection.z * currentSpeed);
+        // if (isSprinting) targetVelocity += new Vector3(moveDirection.x * walkSpeed, rb.linearVelocity.y, moveDirection.z * walkSpeed);
         rb.linearVelocity = targetVelocity;
     }
 
