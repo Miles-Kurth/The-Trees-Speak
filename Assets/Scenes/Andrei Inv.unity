@@ -5804,6 +5804,8 @@ MonoBehaviour:
   DevText: {fileID: 119679633}
   DevMenu: {fileID: 434637486}
   Wood: {fileID: 1259005799}
+  Highlight: {fileID: 9032960506585488005, guid: 5d776c41471f749008a8b79877a21831, type: 3}
+  Normal: {fileID: 739905185230883310, guid: e69be2b21a9a8478e9dfa3ebb1c541be, type: 3}
 --- !u!114 &1679967341
 MonoBehaviour:
   m_ObjectHideFlags: 0
