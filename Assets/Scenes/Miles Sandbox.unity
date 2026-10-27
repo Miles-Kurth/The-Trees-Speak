@@ -748,7 +748,7 @@ Terrain:
   m_StaticShadowCaster: 0
   m_IgnoreQualitySettings: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: -876546973899608171, guid: 1feee00378fbce140a455a0bcfcce6f8, type: 3}
+  m_MaterialTemplate: {fileID: 2100000, guid: 4fbec4e11aaff7740ab5eaf05bc5e108, type: 2}
   m_BakeLightProbesForTrees: 1
   m_PreserveTreePrototypeLayers: 0
   m_DeringLightProbesForTrees: 1
@@ -851,7 +851,7 @@ Transform:
   m_GameObject: {fileID: 1352213709}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -33.740524, y: 29.3126, z: 224.62032}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1018,7 +1018,7 @@ MonoBehaviour:
   ripplesCurrentRegionExtent: {x: 100, y: 100}
   ripplesCurrentRegionOffset: {x: 0, y: 0}
   ripplesCurrentMapInfluence: 1
-  deformation: 0
+  deformation: 1
   deformationRes: 512
   foam: 1
   foamResolution: 512
@@ -1078,18 +1078,18 @@ MonoBehaviour:
   largeOrientationValue: 0
   largeWindSpeed: 30
   largeChaos: 0.85
-  largeBand0Multiplier: 1
+  largeBand0Multiplier: 0
   largeBand0FadeMode: 1
   largeBand0FadeStart: 1500
   largeBand0FadeDistance: 3000
-  largeBand1Multiplier: 1
+  largeBand1Multiplier: 0
   largeBand1FadeMode: 1
   largeBand1FadeStart: 300
   largeBand1FadeDistance: 800
   ripples: 1
   ripplesMotionMode: 0
   ripplesOrientationValue: 0
-  ripplesWindSpeed: 8
+  ripplesWindSpeed: 2
   ripplesChaos: 0.8
   ripplesFadeMode: 1
   ripplesFadeStart: 50
@@ -1117,7 +1117,7 @@ MonoBehaviour:
   tessellationFactorFadeRange: 1850
   refractionColor: {r: 0.010022826, g: 0.21404114, b: 0.21404114, a: 1}
   maxRefractionDistance: 0.5
-  absorptionDistance: 1.5
+  absorptionDistance: 50
   scatteringColor: {r: 0, g: 0.13286833, b: 0.13286833, a: 1}
   ambientScattering: 0.2
   heightScattering: 0.2
@@ -1125,10 +1125,10 @@ MonoBehaviour:
   directLightTipScattering: 0.6
   directLightBodyScattering: 0.5
   maximumHeightOverride: 0
-  caustics: 0
+  caustics: 1
   causticsIntensity: 0.5
   causticsPlaneBlendDistance: 1
-  causticsResolution: 256
+  causticsResolution: 512
   causticsBand: 2
   virtualPlaneDistance: 4
   causticsTilingFactor: 1
@@ -1140,16 +1140,16 @@ MonoBehaviour:
   waterCurrentDebugMode: 0
   currentDebugMultiplier: 1
   waterFoamDebugMode: 0
-  underWater: 0
+  underWater: 1
   volumeBounds: {fileID: 0}
   volumeDepth: 50
   volumeHeight: 0
   volumePrority: 0
-  absorptionDistanceMultiplier: 1
+  absorptionDistanceMultiplier: 1.5
   underWaterAmbientProbeContribution: 1
   underWaterScatteringColorMode: 0
   underWaterScatteringColor: {r: 0, g: 0.27, b: 0.23, a: 1}
-  underWaterRefraction: 0
+  underWaterRefraction: 1
   decalRegionSize: {x: 200, y: 200}
   decalRegionAnchor: {fileID: 0}
 --- !u!4 &1392366741
@@ -1161,7 +1161,7 @@ Transform:
   m_GameObject: {fileID: 1392366739}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 43.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
