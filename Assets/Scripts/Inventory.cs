@@ -90,6 +90,9 @@ public class Inventory : MonoBehaviour
     public Image DevMenu;
 
     public Image Wood;
+
+    public Sprite Highlight;
+    public Sprite Normal;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -288,7 +291,142 @@ public class Inventory : MonoBehaviour
                 DevText.enabled = false;
                 DevMenu.enabled = false;
                 Wood.enabled = false;
+                if (Wood.rectTransform.anchoredPosition.y == -220)
+                {
+                    Wood.enabled = true;
+                }
             }
+        }
+
+        if (Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame)
+        {
+            Inventory1.sprite = Highlight;
+            Inventory2.sprite = Normal;
+            Inventory3.sprite = Normal;
+            Inventory4.sprite = Normal;
+            Inventory5.sprite = Normal;
+            Inventory6.sprite = Normal;
+            Inventory7.sprite = Normal;
+            Inventory8.sprite = Normal;
+            Inventory9.sprite = Normal;
+            Inventory10.sprite = Normal;
+        }
+        if (Keyboard.current != null && Keyboard.current.digit2Key.wasPressedThisFrame)
+        {
+            Inventory1.sprite = Normal;
+            Inventory2.sprite = Highlight;
+            Inventory3.sprite = Normal;
+            Inventory4.sprite = Normal;
+            Inventory5.sprite = Normal;
+            Inventory6.sprite = Normal;
+            Inventory7.sprite = Normal;
+            Inventory8.sprite = Normal;
+            Inventory9.sprite = Normal;
+            Inventory10.sprite = Normal;
+        }
+        if (Keyboard.current != null && Keyboard.current.digit3Key.wasPressedThisFrame)
+        {
+            Inventory1.sprite = Normal;
+            Inventory2.sprite = Normal;
+            Inventory3.sprite = Highlight;
+            Inventory4.sprite = Normal;
+            Inventory5.sprite = Normal;
+            Inventory6.sprite = Normal;
+            Inventory7.sprite = Normal;
+            Inventory8.sprite = Normal;
+            Inventory9.sprite = Normal;
+            Inventory10.sprite = Normal;
+        }
+        if (Keyboard.current != null && Keyboard.current.digit4Key.wasPressedThisFrame)
+        {
+            Inventory1.sprite = Normal;
+            Inventory2.sprite = Normal;
+            Inventory3.sprite = Normal;
+            Inventory4.sprite = Highlight;
+            Inventory5.sprite = Normal;
+            Inventory6.sprite = Normal;
+            Inventory7.sprite = Normal;
+            Inventory8.sprite = Normal;
+            Inventory9.sprite = Normal;
+            Inventory10.sprite = Normal;
+        }
+        if (Keyboard.current != null && Keyboard.current.digit5Key.wasPressedThisFrame)
+        {
+            Inventory1.sprite = Normal;
+            Inventory2.sprite = Normal;
+            Inventory3.sprite = Normal;
+            Inventory4.sprite = Normal;
+            Inventory5.sprite = Highlight;
+            Inventory6.sprite = Normal;
+            Inventory7.sprite = Normal;
+            Inventory8.sprite = Normal;
+            Inventory9.sprite = Normal;
+            Inventory10.sprite = Normal;
+        }
+        if (Keyboard.current != null && Keyboard.current.digit6Key.wasPressedThisFrame)
+        {
+            Inventory1.sprite = Normal;
+            Inventory2.sprite = Normal;
+            Inventory3.sprite = Normal;
+            Inventory4.sprite = Normal;
+            Inventory5.sprite = Normal;
+            Inventory6.sprite = Highlight;
+            Inventory7.sprite = Normal;
+            Inventory8.sprite = Normal;
+            Inventory9.sprite = Normal;
+            Inventory10.sprite = Normal;
+        }
+        if (Keyboard.current != null && Keyboard.current.digit7Key.wasPressedThisFrame)
+        {
+            Inventory1.sprite = Normal;
+            Inventory2.sprite = Normal;
+            Inventory3.sprite = Normal;
+            Inventory4.sprite = Normal;
+            Inventory5.sprite = Normal;
+            Inventory6.sprite = Normal;
+            Inventory7.sprite = Highlight;
+            Inventory8.sprite = Normal;
+            Inventory9.sprite = Normal;
+            Inventory10.sprite = Normal;
+        }
+        if (Keyboard.current != null && Keyboard.current.digit8Key.wasPressedThisFrame)
+        {
+            Inventory1.sprite = Normal;
+            Inventory2.sprite = Normal;
+            Inventory3.sprite = Normal;
+            Inventory4.sprite = Normal;
+            Inventory5.sprite = Normal;
+            Inventory6.sprite = Normal;
+            Inventory7.sprite = Normal;
+            Inventory8.sprite = Highlight;
+            Inventory9.sprite = Normal;
+            Inventory10.sprite = Normal;
+        }
+        if (Keyboard.current != null && Keyboard.current.digit9Key.wasPressedThisFrame)
+        {
+            Inventory1.sprite = Normal;
+            Inventory2.sprite = Normal;
+            Inventory3.sprite = Normal;
+            Inventory4.sprite = Normal;
+            Inventory5.sprite = Normal;
+            Inventory6.sprite = Normal;
+            Inventory7.sprite = Normal;
+            Inventory8.sprite = Normal;
+            Inventory9.sprite = Highlight;
+            Inventory10.sprite = Normal;
+        }
+        if (Keyboard.current != null && Keyboard.current.digit0Key.wasPressedThisFrame)
+        {
+            Inventory1.sprite = Normal;
+            Inventory2.sprite = Normal;
+            Inventory3.sprite = Normal;
+            Inventory4.sprite = Normal;
+            Inventory5.sprite = Normal;
+            Inventory6.sprite = Normal;
+            Inventory7.sprite = Normal;
+            Inventory8.sprite = Normal;
+            Inventory9.sprite = Normal;
+            Inventory10.sprite = Highlight;
         }
     }
 }

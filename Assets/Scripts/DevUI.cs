@@ -22,8 +22,18 @@ public class DevUI : MonoBehaviour
     {
         if (DevMenu.enabled)
         {
+            
+            if (Wood.rectTransform.anchoredPosition.x > 0)
+            {
+                Debug.Log("WOOD");
+                Wood.enabled = true;
+            }
+            else
+            {
+                Debug.Log("WOODNo");
+                Wood.enabled = false;
+            }
             DevMenu.enabled = false;
-            Wood.enabled = false;
         }
         else{
             DevMenu.enabled = true;
