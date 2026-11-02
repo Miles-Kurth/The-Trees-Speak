@@ -3,12 +3,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public PlayerBuoyancy buoyancy;
+    
     public Transform camera;
     
     [Header("Movement Settings")]
     // [SerializeField] private float moveSpeed = 2.0f;
     private float walkSpeed = 5f;
     private float sprintSpeed = 10f;
+    private float waterSpeed = 2.5f;
     [SerializeField] public float jumpForce = 5.0f;
     [SerializeField] public float rotationSpeed = 10.0f;
     [Range(0f, 1f)] 
@@ -100,14 +103,33 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         isSprinting = sprintAction.ReadValue<float>() > 0f;
+        
         float currentSpeed;
         if (isSprinting) currentSpeed = sprintSpeed;
         else currentSpeed = walkSpeed;
-        // Debug.Log(isSprinting + "  " + currentSpeed);
         
-        Vector3 targetVelocity = new Vector3(moveDirection.x * currentSpeed, rb.linearVelocity.y, moveDirection.z * currentSpeed);
-        // if (isSprinting) targetVelocity += new Vector3(moveDirection.x * walkSpeed, rb.linearVelocity.y, moveDirection.z * walkSpeed);
-        rb.linearVelocity = targetVelocity;
+        if (!isGrounded && buoyancy.inWater)
+        {
+            isSprinting = false;
+            currentSpeed = waterSpeed;
+        }
+        
+        // Vector3 targetVelocity = new Vector3(moveDirection.x * currentSpeed, rb.linearVelocity.y, moveDirection.z * currentSpeed);
+        // rb.linearVelocity = targetVelocity;
+        
+        
+        // 1. Calculate what your horizontal target velocity should be based on input
+        Vector3 horizontalTarget = new Vector3(moveDirection.x * currentSpeed, 0, moveDirection.z * currentSpeed);
+
+        // 2. Isolate your current horizontal velocity
+        Vector3 horizontalVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+
+        // 3. Smoothly step the current velocity toward the target velocity
+        // Adjust 'decelerationSpeed' to control how long it takes to stop (e.g., try 15f to 25f)
+        float decelerationSpeed = 30f; 
+        Vector3 horizontalNew = Vector3.MoveTowards(horizontalVelocity, horizontalTarget, decelerationSpeed * Time.fixedDeltaTime);
+        rb.linearVelocity = new Vector3(horizontalNew.x, rb.linearVelocity.y, horizontalNew.z);
+        
     }
 
     private void RotatePlayer()

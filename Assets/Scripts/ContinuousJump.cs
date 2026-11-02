@@ -56,7 +56,7 @@ public class ContinuousJump : MonoBehaviour
         isJumping = true;
         jumpLockedOut = true; // Actively locks inputs until physics pulls us away from the floor
         
-        Debug.Log("jumping ");
+        Debug.Log("Jumping:  isGrounded=" + moveReference.isGrounded);
         
         // Clear vertical velocity for absolute uniformity
         Vector3 velocity = rb.linearVelocity;
