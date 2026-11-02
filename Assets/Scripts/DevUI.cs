@@ -4,8 +4,10 @@ using UnityEngine.UI;
 public class DevUI : MonoBehaviour
 {
     public Image DevMenu;
-
+    public Button AppleButton;
     public Image Wood;
+
+    public Image Inv;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,25 +17,21 @@ public class DevUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Inv.enabled == false || DevMenu.enabled == false)
+        {
+            AppleButton.image.enabled = false;
+        }
+        else
+        {
+            AppleButton.image.enabled = true;
+        }
     }
 
     public void DevButton()
     {
         if (DevMenu.enabled)
         {
-            
-            if (Wood.rectTransform.anchoredPosition.x > 0)
-            {
-                Debug.Log("WOOD");
-                Wood.enabled = true;
-            }
-            else
-            {
-                Debug.Log("WOODNo");
-                Wood.enabled = false;
-            }
-            DevMenu.enabled = false;
+            Wood.enabled = true;
         }
         else{
             DevMenu.enabled = true;
