@@ -14,8 +14,8 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("Movement Settings")]
     // [SerializeField] private float moveSpeed = 2.0f;
-    private float walkSpeed = 5f;
-    private float sprintSpeed = 10f;
+    private float walkSpeed = 4.0f;
+    private float sprintSpeed = 8.0f;
     private float waterSpeed = 2.5f;
     [SerializeField] public float jumpForce = 5.0f;
     [SerializeField] public float rotationSpeed = 10.0f;
