@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -6,6 +8,22 @@ using UnityEngine.InputSystem;
 
 public class QuitGame : MonoBehaviour
 {
+    public Button Resume;
+    public TextMeshProUGUI ResumeText;
+    public Button Options;
+    public TextMeshProUGUI OptionsText;
+    public Button Quit;
+    public TextMeshProUGUI QuitText;
+    public Image Inventory;
+    void Start()
+    {
+        Resume.image.enabled = false;
+        ResumeText.enabled = false;
+        Options.image.enabled = false;
+        OptionsText.enabled = false;
+        Quit.image.enabled = false;
+        QuitText.enabled = false;
+    }
     void Update()
     {
         bool escPressed = false;
@@ -24,13 +42,37 @@ public class QuitGame : MonoBehaviour
         }
         #endif
 
-        if (escPressed)
+        if (escPressed && !Inventory.enabled)
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Resume.image.enabled = true;
+            ResumeText.enabled = true;
+            Options.image.enabled = true;
+            OptionsText.enabled = true;
+            Quit.image.enabled = true;
+            QuitText.enabled = true;
+        }
+    }
+
+    public void end()
+    {
         #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
         #else
             Application.Quit();
         #endif
-        }
+    }
+
+    public void resume()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Resume.image.enabled = false;
+        ResumeText.enabled = false;
+        Options.image.enabled = false;
+        OptionsText.enabled = false;
+        Quit.image.enabled = false;
+        QuitText.enabled = false;
     }
 }

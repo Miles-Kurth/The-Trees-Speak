@@ -24,13 +24,20 @@ public class Item2 : MonoBehaviour
         {
             float mouseX = Mouse.current.position.ReadValue().x;
             float mouseY = Mouse.current.position.ReadValue().y;
-            AppleRect.anchoredPosition = new Vector2((float)(mouseX * 0.417)-50, (float)(mouseY * 0.417)-300);
+            AppleRect.anchoredPosition = new Vector2((float)(mouseX * 0.417)-400, (float)(mouseY * 0.417)-225);
         }
     }
 
     public void Apple()
     {
-        startTrack = true;
-        hasClicked = true;
+        if (startTrack == true)
+        {
+            startTrack = false;
+        }
+        else
+        {
+            startTrack = true;
+            hasClicked = true;
+        }
     }
 }

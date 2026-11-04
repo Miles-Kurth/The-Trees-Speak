@@ -93,6 +93,10 @@ public class Inventory : MonoBehaviour
 
     public Sprite Highlight;
     public Sprite Normal;
+
+    public bool escapeKeyReleased = true;
+
+    public bool escapeKeyTrack = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -147,11 +151,11 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
+        if (Inventory11.enabled == false)
         {
-            // Inventory Opens
-            if (Inventory11.enabled == false)
+            if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
             {
+                // Inventory Opens
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 Heart1.enabled = false;
@@ -219,11 +223,15 @@ public class Inventory : MonoBehaviour
                 Dev.image.enabled = true;
                 DevText.enabled = true;
             }
-            // Inventory Closes
-            else
+        }
+        // Inventory Closes
+        else{
+            if (Keyboard.current != null && (Keyboard.current.escapeKey.wasPressedThisFrame || Keyboard.current.eKey.wasPressedThisFrame))
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
+                escapeKeyTrack = true;
+                escapeKeyReleased = false;
                 Inv.enabled = false;
                 Heart1.enabled = true;
                 Heart2.enabled = true;
@@ -296,7 +304,9 @@ public class Inventory : MonoBehaviour
                     Wood.enabled = true;
                 }
             }
-        }
+
+        }            
+        
 
         if (Keyboard.current != null && Keyboard.current.digit1Key.wasPressedThisFrame)
         {
@@ -427,6 +437,15 @@ public class Inventory : MonoBehaviour
             Inventory8.sprite = Normal;
             Inventory9.sprite = Normal;
             Inventory10.sprite = Highlight;
+        }
+
+        if (escapeKeyTrack == true)
+        {
+            if (Keyboard.current != null && Keyboard.current.escapeKey.wasReleasedThisFrame)
+            {
+                escapeKeyTrack = false;
+                escapeKeyReleased = true;
+            }
         }
     }
 }
