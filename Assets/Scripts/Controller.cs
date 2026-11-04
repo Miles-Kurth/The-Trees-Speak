@@ -345,8 +345,6 @@ public class Controller : MonoBehaviour
         }
         else
         {
-            Debug.Log(x);
-            Debug.Log(y);
             startTrack = true;   
         }
     }

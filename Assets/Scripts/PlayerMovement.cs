@@ -1,11 +1,16 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
     public PlayerBuoyancy buoyancy;
     
     public Transform camera;
+    public Image Stamina;
+    private int stamNum = 400;
+    private float stamSize = 425f;
     
     [Header("Movement Settings")]
     // [SerializeField] private float moveSpeed = 2.0f;
@@ -49,7 +54,24 @@ public class PlayerMovement : MonoBehaviour
     
     void Start()
     {
-        
+    }
+
+    void updateStamina()
+    {
+        if (stamNum > 400)
+        {
+            stamNum = 400;
+        }
+
+        if (stamNum < 0)
+        {
+            stamNum = 0;
+        }
+        if (stamNum > 0)
+        {
+            stamSize = 425 * (stamNum / 400f);
+            Stamina.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, stamSize);
+        }
     }
 
     void OnMove(InputValue movementValue)
@@ -105,8 +127,27 @@ public class PlayerMovement : MonoBehaviour
         isSprinting = sprintAction.ReadValue<float>() > 0f;
         
         float currentSpeed;
-        if (isSprinting) currentSpeed = sprintSpeed;
-        else currentSpeed = walkSpeed;
+        if (isSprinting)
+        {
+            stamNum--;
+            updateStamina();
+            if (stamNum > 0)
+            {
+                currentSpeed = sprintSpeed;
+            }
+            else
+            {
+                currentSpeed = walkSpeed;
+            }
+        } 
+        
+        else
+        {
+            currentSpeed = walkSpeed;
+            stamNum++;
+            updateStamina();
+        }
+        // Debug.Log(isSprinting + "  " + currentSpeed);
         
         if (!isGrounded && buoyancy.inWater)
         {
