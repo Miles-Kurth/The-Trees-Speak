@@ -17,11 +17,7 @@ public class DevUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Inv.enabled == false || DevMenu.enabled == false)
-        {
-            AppleButton.image.enabled = false;
-        }
-        else
+        if (Inv.enabled)
         {
             AppleButton.image.enabled = true;
         }

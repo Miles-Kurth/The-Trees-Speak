@@ -4175,16 +4175,6 @@ MonoBehaviour:
   Hunger9: {fileID: 273783373}
   Hunger10: {fileID: 1957280297}
   Stamina: {fileID: 747339988}
-  Inventory1: {fileID: 1785108854}
-  Inventory2: {fileID: 298756676}
-  Inventory3: {fileID: 1100168496}
-  Inventory4: {fileID: 1846872006}
-  Inventory5: {fileID: 2063600238}
-  Inventory6: {fileID: 799007325}
-  Inventory7: {fileID: 1784196663}
-  Inventory8: {fileID: 127025755}
-  Inventory9: {fileID: 276334181}
-  Inventory10: {fileID: 723375075}
   Inventory11: {fileID: 582607830}
   Inventory12: {fileID: 1017473803}
   Inventory13: {fileID: 1374504572}
@@ -5372,7 +5362,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -350.00006, y: 40}
+  m_AnchoredPosition: {x: -350, y: 40}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1243485800
@@ -5483,6 +5473,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   AppleButton: {fileID: 1243485800}
   AppleRect: {fileID: 1243485799}
+  Inv: {fileID: 582607830}
 --- !u!1 &1298497516
 GameObject:
   m_ObjectHideFlags: 0
@@ -6108,6 +6099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24c00137d6cc341feac4c8bad9278953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  buoyancy: {fileID: 0}
   camera: {fileID: 1756723120}
   Stamina: {fileID: 747339988}
   jumpForce: 5
@@ -6140,6 +6132,7 @@ MonoBehaviour:
   Quit: {fileID: 0}
   QuitText: {fileID: 0}
   Inventory: {fileID: 0}
+  waitEsc: 0
 --- !u!143 &1483294218
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6932,6 +6925,7 @@ GameObject:
   - component: {fileID: 1622285448}
   - component: {fileID: 1622285447}
   - component: {fileID: 1622285446}
+  - component: {fileID: 1622285449}
   m_Layer: 5
   m_Name: Hunger1
   m_TagString: Untagged
@@ -6996,6 +6990,30 @@ RectTransform:
   m_AnchoredPosition: {x: 20, y: -100}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1622285449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622285445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d482afa02de5c41968dd2daafd67cb27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  hunger1: {fileID: 1622285446}
+  hunger2: {fileID: 1887526313}
+  hunger3: {fileID: 125830754}
+  hunger4: {fileID: 1163747624}
+  hunger5: {fileID: 461468738}
+  hunger6: {fileID: 127802629}
+  hunger7: {fileID: 1054836750}
+  hunger8: {fileID: 1310852099}
+  hunger9: {fileID: 273783373}
+  hunger10: {fileID: 1957280297}
+  hunger: 1000
+  hungerRate: 1
 --- !u!1 &1628805310
 GameObject:
   m_ObjectHideFlags: 0
@@ -7306,6 +7324,7 @@ MonoBehaviour:
   Quit: {fileID: 706086527}
   QuitText: {fileID: 407976238}
   Inventory: {fileID: 582607830}
+  waitEsc: 0
 --- !u!4 &1752891200
 Transform:
   m_ObjectHideFlags: 0
