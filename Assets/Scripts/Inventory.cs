@@ -30,16 +30,16 @@ public class Inventory : MonoBehaviour
 
     public Image Stamina;
 
-    public Image Inventory1;
-    public Image Inventory2;
-    public Image Inventory3;
-    public Image Inventory4;
-    public Image Inventory5;
-    public Image Inventory6;
-    public Image Inventory7;
-    public Image Inventory8;
-    public Image Inventory9;
-    public Image Inventory10;
+    public static Image Inventory1;
+    public static Image Inventory2;
+    public static Image Inventory3;
+    public static Image Inventory4;
+    public static Image Inventory5;
+    public static Image Inventory6;
+    public static Image Inventory7;
+    public static Image Inventory8;
+    public static Image Inventory9;
+    public static Image Inventory10;
     public Image Inventory11;
     public Image Inventory12;
     public Image Inventory13;
@@ -222,6 +222,7 @@ public class Inventory : MonoBehaviour
                 Dev.enabled = true;
                 Dev.image.enabled = true;
                 DevText.enabled = true;
+                DevMenu.enabled = true;
             }
         }
         // Inventory Closes

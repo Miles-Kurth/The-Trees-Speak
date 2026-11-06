@@ -15,6 +15,7 @@ public class QuitGame : MonoBehaviour
     public Button Quit;
     public TextMeshProUGUI QuitText;
     public Image Inventory;
+    public bool waitEsc = false;
     void Start()
     {
         Resume.image.enabled = false;
@@ -42,7 +43,17 @@ public class QuitGame : MonoBehaviour
         }
         #endif
 
-        if (escPressed && !Inventory.enabled)
+        if (escPressed && Inventory.enabled)
+        {
+            waitEsc = true;
+        }
+
+        if (waitEsc && Keyboard.current.escapeKey.wasReleasedThisFrame)
+        {
+            waitEsc = false;
+        }
+
+        if (escPressed && !Inventory.enabled && waitEsc == false)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
