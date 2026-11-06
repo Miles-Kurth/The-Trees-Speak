@@ -649,6 +649,8 @@ MonoBehaviour:
   Wood: {fileID: 275096651}
   Highlight: {fileID: 9032960506585488005, guid: 5d776c41471f749008a8b79877a21831, type: 3}
   Normal: {fileID: 739905185230883310, guid: e69be2b21a9a8478e9dfa3ebb1c541be, type: 3}
+  escapeKeyReleased: 1
+  escapeKeyTrack: 0
 --- !u!114 &199362967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6710,6 +6712,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac52c1ae37894aa592495411bd7e70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  Resume: {fileID: 0}
+  ResumeText: {fileID: 0}
+  Options: {fileID: 0}
+  OptionsText: {fileID: 0}
+  Quit: {fileID: 0}
+  QuitText: {fileID: 0}
+  Inventory: {fileID: 0}
 --- !u!4 &1670514211
 Transform:
   m_ObjectHideFlags: 0
@@ -6969,6 +6978,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac52c1ae37894aa592495411bd7e70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  Resume: {fileID: 0}
+  ResumeText: {fileID: 0}
+  Options: {fileID: 0}
+  OptionsText: {fileID: 0}
+  Quit: {fileID: 0}
+  QuitText: {fileID: 0}
+  Inventory: {fileID: 0}
 --- !u!143 &1739556163
 CharacterController:
   m_ObjectHideFlags: 0
@@ -7110,7 +7126,7 @@ Transform:
   m_GameObject: {fileID: 1739556159}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 72.4, y: 53.86, z: 323.7}
+  m_LocalPosition: {x: 72.4, y: 52.13, z: 323.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

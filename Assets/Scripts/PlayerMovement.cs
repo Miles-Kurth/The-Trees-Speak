@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -9,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     
     public Transform camera;
     public Image Stamina;
-    private int stamNum = 400;
+    private float stamNum = 400;
     private float stamSize = 425f;
     
     [Header("Movement Settings")]
@@ -39,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
     public bool canJump = false;
     private bool isHoldingJump = false;
     private bool isSprinting = false;
+    private float sprintRechargeFactor = 0f;
+    private float sprintDrainFactor = 0f;
     
     private PlayerInput playerInput;
     private InputAction sprintAction;
@@ -56,11 +59,13 @@ public class PlayerMovement : MonoBehaviour
     {
     }
 
-    void updateStamina()
+    void UpdateStamina()
     {
         if (stamNum > 400)
         {
             stamNum = 400;
+            sprintRechargeFactor = 0f;
+            sprintDrainFactor = 0f;
         }
 
         if (stamNum < 0)
@@ -71,6 +76,15 @@ public class PlayerMovement : MonoBehaviour
         {
             stamSize = 425 * (stamNum / 400f);
             Stamina.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, stamSize);
+        }
+
+        if (sprintRechargeFactor < 0f)
+        {
+            sprintRechargeFactor = 0f;
+        }
+        if (sprintDrainFactor < 0f)
+        {
+            sprintDrainFactor = 0f;
         }
     }
 
@@ -127,27 +141,31 @@ public class PlayerMovement : MonoBehaviour
         isSprinting = sprintAction.ReadValue<float>() > 0f;
         
         float currentSpeed;
-        if (isSprinting)
+        if (isSprinting && moveDirection != Vector3.zero)
         {
-            stamNum--;
-            updateStamina();
+            DecreaseStamina();
+            
             if (stamNum > 0)
             {
                 currentSpeed = sprintSpeed;
+                sprintRechargeFactor -= 2f;
+                sprintDrainFactor += 0.02f;
             }
             else
             {
                 currentSpeed = walkSpeed;
+                sprintDrainFactor -= 2f;
             }
         } 
-        
         else
         {
             currentSpeed = walkSpeed;
-            stamNum++;
-            updateStamina();
+            if (stamNum < 400) IncreaseStamina();
+            sprintRechargeFactor += 0.02f;
+            sprintDrainFactor -= 2f;
         }
-        // Debug.Log(isSprinting + "  " + currentSpeed);
+        UpdateStamina();
+        // Debug.Log("Stamina: " + stamNum);
         
         if (!isGrounded && buoyancy.inWater)
         {
@@ -181,6 +199,27 @@ public class PlayerMovement : MonoBehaviour
             rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
     }
-    
+
+    private void IncreaseStamina()
+    {
+        double change = 0.872 + (Math.Pow(2, ((1 / 2.69) * sprintRechargeFactor) - 3.21));
+        stamNum += (float)change;
+        Debug.Log("Increase: " + change + "   Time: " + sprintRechargeFactor);
+    }
+
+    private void DecreaseStamina()
+    {
+        double change = 0.83 - (Math.Pow(2, ((1 / 1.75) * sprintDrainFactor) - 7.75));
+        stamNum -= (float)change;
+        Debug.Log("Decrease: " + change + "   Time: " + sprintDrainFactor);
+    }
+
+    void OnSprint(InputValue value)
+    {
+        if (sprintAction.WasPressedThisFrame())
+        {
+            stamNum -= 10;
+        }
+    }
     
 }
