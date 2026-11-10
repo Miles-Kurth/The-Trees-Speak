@@ -29,17 +29,26 @@ public class Inventory : MonoBehaviour
     public Image Hunger10;
 
     public Image Stamina;
-
-    public static Image Inventory1;
-    public static Image Inventory2;
-    public static Image Inventory3;
-    public static Image Inventory4;
-    public static Image Inventory5;
-    public static Image Inventory6;
-    public static Image Inventory7;
-    public static Image Inventory8;
-    public static Image Inventory9;
-    public static Image Inventory10;
+    public Image Inventory1;
+    public Image Inventory2;
+    public Image Inventory3;
+    public Image Inventory4;
+    public Image Inventory5;
+    public Image Inventory6;
+    public Image Inventory7;
+    public Image Inventory8;
+    public Image Inventory9;
+    public Image Inventory10;
+    public static Image GInventory1;
+    public static Image GInventory2;
+    public static Image GInventory3;
+    public static Image GInventory4;
+    public static Image GInventory5;
+    public static Image GInventory6;
+    public static Image GInventory7;
+    public static Image GInventory8;
+    public static Image GInventory9;
+    public static Image GInventory10;
     public Image Inventory11;
     public Image Inventory12;
     public Image Inventory13;
@@ -93,13 +102,25 @@ public class Inventory : MonoBehaviour
 
     public Sprite Highlight;
     public Sprite Normal;
-
+    public static Sprite GHighlight;
+    public Button Resume;
     public bool escapeKeyReleased = true;
 
     public bool escapeKeyTrack = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        GInventory1 = Inventory1;
+        GInventory2 = Inventory2;
+        GInventory3 = Inventory3;
+        GInventory4 = Inventory4;
+        GInventory5 = Inventory5;
+        GInventory6 = Inventory6;
+        GInventory7 = Inventory7;
+        GInventory8 = Inventory8;
+        GInventory9 = Inventory9;
+        GInventory10 = Inventory10;
+        GHighlight = Highlight;
         Inv.enabled = false;
         Inventory11.enabled = false;
         Inventory12.enabled = false;
@@ -151,7 +172,7 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Inventory11.enabled == false)
+        if (Inventory11.enabled == false && Resume.image.enabled == false)
         {
             if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
             {
@@ -229,8 +250,11 @@ public class Inventory : MonoBehaviour
         else{
             if (Keyboard.current != null && (Keyboard.current.escapeKey.wasPressedThisFrame || Keyboard.current.eKey.wasPressedThisFrame))
             {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                if (Resume.image.enabled == false)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
                 escapeKeyTrack = true;
                 escapeKeyReleased = false;
                 Inv.enabled = false;

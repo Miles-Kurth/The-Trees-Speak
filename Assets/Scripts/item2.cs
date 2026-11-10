@@ -7,6 +7,7 @@ public class Item2 : MonoBehaviour
     public Button AppleButton;
     public RectTransform AppleRect;
     public Image Inv;
+    public bool isHeld = false;
     private bool startTrack = false;
     private bool hasClicked = false;
 
@@ -21,6 +22,54 @@ public class Item2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Inventory.GInventory1.sprite == Inventory.GHighlight && x == 1 && y == 1)
+        {
+            isHeld = true;
+        }
+        if (Inventory.GInventory2.sprite == Inventory.GHighlight && x == 2 && y == 1)
+        {
+            isHeld = true;
+        }
+        if (Inventory.GInventory3.sprite == Inventory.GHighlight && x == 3 && y == 1)
+        {
+            isHeld = true;
+        }
+        if (Inventory.GInventory4.sprite == Inventory.GHighlight && x == 4 && y == 1)
+        {
+            isHeld = true;
+        }
+        if (Inventory.GInventory5.sprite == Inventory.GHighlight && x == 5 && y == 1)
+        {
+            isHeld = true;
+        }
+        if (Inventory.GInventory6.sprite == Inventory.GHighlight && x == 6 && y == 1)
+        {
+            isHeld = true;
+        }
+        if (Inventory.GInventory7.sprite == Inventory.GHighlight && x == 7 && y == 1)
+        {
+            isHeld = true;
+        }
+        if (Inventory.GInventory8.sprite == Inventory.GHighlight && x == 8 && y == 1)
+        {
+            isHeld = true;
+        }
+        if (Inventory.GInventory9.sprite == Inventory.GHighlight && x == 9 && y == 1)
+        {
+            isHeld = true;
+        }
+        if (Inventory.GInventory10.sprite == Inventory.GHighlight && x == 10 && y == 1)
+        {
+            isHeld = true;
+        }
+
+        if (isHeld == true)
+        {
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                Hunger.hunger += 1000;
+            }
+        }
         if (AppleRect.anchoredPosition.y == -145)
         {
             AppleButton.image.enabled = true;
