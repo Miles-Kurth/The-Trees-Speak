@@ -84,6 +84,13 @@ public class Hunger : MonoBehaviour
 
     void FixedUpdate()
     {
-        hunger -= hungerRate;
+        if (PlayerMovement.isSprinting == true)
+        {
+            hunger -= hungerRate*3;
+        }
+        else
+        {
+            hunger -= hungerRate;
+        }
     }
 }

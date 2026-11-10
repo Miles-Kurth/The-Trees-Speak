@@ -4175,6 +4175,16 @@ MonoBehaviour:
   Hunger9: {fileID: 273783373}
   Hunger10: {fileID: 1957280297}
   Stamina: {fileID: 747339988}
+  Inventory1: {fileID: 1785108854}
+  Inventory2: {fileID: 298756676}
+  Inventory3: {fileID: 1100168496}
+  Inventory4: {fileID: 1846872006}
+  Inventory5: {fileID: 2063600238}
+  Inventory6: {fileID: 799007325}
+  Inventory7: {fileID: 1784196663}
+  Inventory8: {fileID: 127025755}
+  Inventory9: {fileID: 276334181}
+  Inventory10: {fileID: 723375075}
   Inventory11: {fileID: 582607830}
   Inventory12: {fileID: 1017473803}
   Inventory13: {fileID: 1374504572}
@@ -4221,6 +4231,7 @@ MonoBehaviour:
   Wood: {fileID: 66304191}
   Highlight: {fileID: 9032960506585488005, guid: 5d776c41471f749008a8b79877a21831, type: 3}
   Normal: {fileID: 739905185230883310, guid: e69be2b21a9a8478e9dfa3ebb1c541be, type: 3}
+  Resume: {fileID: 186314306}
   escapeKeyReleased: 1
   escapeKeyTrack: 0
 --- !u!114 &813141648
@@ -5474,6 +5485,7 @@ MonoBehaviour:
   AppleButton: {fileID: 1243485800}
   AppleRect: {fileID: 1243485799}
   Inv: {fileID: 582607830}
+  isHeld: 0
 --- !u!1 &1298497516
 GameObject:
   m_ObjectHideFlags: 0
@@ -7012,8 +7024,8 @@ MonoBehaviour:
   hunger8: {fileID: 1310852099}
   hunger9: {fileID: 273783373}
   hunger10: {fileID: 1957280297}
-  hunger: 1000
   hungerRate: 1
+  remain: 0
 --- !u!1 &1628805310
 GameObject:
   m_ObjectHideFlags: 0
@@ -9206,10 +9218,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 2013410475}
   - {fileID: 1752891200}
+  - {fileID: 698820933}
   - {fileID: 1521343115}
   - {fileID: 1898453273}
   - {fileID: 1895914520}
-  - {fileID: 698820933}
   - {fileID: 1483294223}
   - {fileID: 1026099171}
   - {fileID: 1628805312}
