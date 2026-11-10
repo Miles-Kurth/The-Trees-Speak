@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     public bool wasGroundedLastFrame;
     public bool canJump = false;
     private bool isHoldingJump = false;
-    private bool isSprinting = false;
+    public static bool isSprinting = false;
     private float sprintRechargeFactor = 0f;
     private float sprintDrainFactor = 0f;
     private float timeSinceSprintStarted = 0f;
@@ -142,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
         isSprinting = sprintAction.ReadValue<float>() > 0f;
         
         float currentSpeed;
-        if (isSprinting && moveDirection != Vector3.zero)
+        if (isSprinting && moveDirection != Vector3.zero && Hunger.hunger > 30000)
         {
             DecreaseStamina();
             
