@@ -46,6 +46,13 @@ public class QuitGame : MonoBehaviour
         }
         #endif
 
+        IEnumerator WaitUntilEscReleased()
+        {
+            yield return new WaitUntil(() => Keyboard.current.escapeKey.wasReleasedThisFrame);
+            waitEsc = false;
+        }
+        
+        //When inventory closed
         if (escPressed && Inventory.enabled && !waitEsc)
         {
             // Debug.Log("Test");
@@ -53,15 +60,10 @@ public class QuitGame : MonoBehaviour
             StartCoroutine(WaitUntilEscReleased());
         }
         
-        IEnumerator WaitUntilEscReleased()
-        {
-            yield return new WaitUntil(() => Keyboard.current.escapeKey.wasReleasedThisFrame);
-            waitEsc = false;
-        }
-
         //Open pause screen
         if (escPressed && !Inventory.enabled && !waitEsc)
         {
+            Debug.Log("Test");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Resume.image.enabled = true;
@@ -74,9 +76,9 @@ public class QuitGame : MonoBehaviour
             StartCoroutine(WaitUntilEscReleased());
         }
         
+        //Close pause screen
         if (escPressed && Resume.enabled && !waitEsc)
         {
-            Debug.Log("Test");
             resume();
             waitEsc = true;
             StartCoroutine(WaitUntilEscReleased());
@@ -94,6 +96,7 @@ public class QuitGame : MonoBehaviour
 
     public void resume()
     {
+        Debug.Log("resume called");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Resume.image.enabled = false;
