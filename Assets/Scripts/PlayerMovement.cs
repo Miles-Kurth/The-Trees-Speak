@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isSprinting = false;
     private float sprintRechargeFactor = 0f;
     private float sprintDrainFactor = 0f;
+    private float timeSinceSprintStarted = 0f;
     
     private PlayerInput playerInput;
     private InputAction sprintAction;
@@ -164,6 +165,7 @@ public class PlayerMovement : MonoBehaviour
             sprintRechargeFactor += 0.02f;
             sprintDrainFactor -= 2f;
         }
+        timeSinceSprintStarted += 0.02f;
         UpdateStamina();
         // Debug.Log("Stamina: " + stamNum);
         
@@ -172,9 +174,6 @@ public class PlayerMovement : MonoBehaviour
             isSprinting = false;
             currentSpeed = waterSpeed;
         }
-        
-        // Vector3 targetVelocity = new Vector3(moveDirection.x * currentSpeed, rb.linearVelocity.y, moveDirection.z * currentSpeed);
-        // rb.linearVelocity = targetVelocity;
         
         
         // 1. Calculate what your horizontal target velocity should be based on input
@@ -204,21 +203,23 @@ public class PlayerMovement : MonoBehaviour
     {
         double change = 0.872 + (Math.Pow(2, ((1 / 2.69) * sprintRechargeFactor) - 3.21));
         stamNum += (float)change;
-        Debug.Log("Increase: " + change + "   Time: " + sprintRechargeFactor);
+        // Debug.Log("Increase: " + change + "   Time: " + sprintRechargeFactor);
     }
 
     private void DecreaseStamina()
     {
         double change = 0.83 - (Math.Pow(2, ((1 / 1.75) * sprintDrainFactor) - 7.75));
         stamNum -= (float)change;
-        Debug.Log("Decrease: " + change + "   Time: " + sprintDrainFactor);
+        if (timeSinceSprintStarted < 0.5) stamNum -= 0.5f;
+        // Debug.Log("Decrease: " + change + "   Time: " + sprintDrainFactor);
     }
 
     void OnSprint(InputValue value)
     {
         if (sprintAction.WasPressedThisFrame())
         {
-            stamNum -= 10;
+            timeSinceSprintStarted = 0f;
+            // stamNum -= 10;
         }
     }
     

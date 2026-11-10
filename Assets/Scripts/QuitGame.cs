@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 #endif
 
+[DefaultExecutionOrder(-100)]
 public class QuitGame : MonoBehaviour
 {
     public Button Resume;
@@ -27,6 +29,7 @@ public class QuitGame : MonoBehaviour
     }
     void Update()
     {
+        // Debug.Log(Inventory.enabled);
         bool escPressed = false;
 
         // Check using New Input System
@@ -43,17 +46,21 @@ public class QuitGame : MonoBehaviour
         }
         #endif
 
-        if (escPressed && Inventory.enabled)
+        if (escPressed && Inventory.enabled && !waitEsc)
         {
+            // Debug.Log("Test");
             waitEsc = true;
+            StartCoroutine(WaitUntilEscReleased());
         }
-
-        if (waitEsc && Keyboard.current.escapeKey.wasReleasedThisFrame)
+        
+        IEnumerator WaitUntilEscReleased()
         {
+            yield return new WaitUntil(() => Keyboard.current.escapeKey.wasReleasedThisFrame);
             waitEsc = false;
         }
 
-        if (escPressed && !Inventory.enabled && waitEsc == false)
+        //Open pause screen
+        if (escPressed && !Inventory.enabled && !waitEsc)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -63,15 +70,25 @@ public class QuitGame : MonoBehaviour
             OptionsText.enabled = true;
             Quit.image.enabled = true;
             QuitText.enabled = true;
+            waitEsc = true;
+            StartCoroutine(WaitUntilEscReleased());
+        }
+        
+        if (escPressed && Resume.enabled && !waitEsc)
+        {
+            Debug.Log("Test");
+            resume();
+            waitEsc = true;
+            StartCoroutine(WaitUntilEscReleased());
         }
     }
 
-    public void end()
+    public void End()
     {
         #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         #else
-            Application.Quit();
+        Application.Quit();
         #endif
     }
 
