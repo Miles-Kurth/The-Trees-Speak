@@ -174,7 +174,7 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Inventory11.enabled == false && Resume.image.enabled == false)
+        if (!Inventory11.enabled && !Resume.image.enabled)
         {
             if (Keyboard.current != null && Keyboard.current.eKey.wasPressedThisFrame)
             {

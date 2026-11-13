@@ -55,7 +55,7 @@ public class QuitGame : MonoBehaviour
         //When inventory closed
         if (escPressed && Inventory.enabled && !waitEsc)
         {
-            Debug.Log("Test");
+            Debug.Log("Inventory closed");
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
             waitEsc = true;
@@ -65,7 +65,7 @@ public class QuitGame : MonoBehaviour
         //Open pause screen
         if (escPressed && !Inventory.enabled && !waitEsc)
         {
-            // Debug.Log("Test");
+            Debug.Log("Open pause screen");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
             Resume.image.enabled = true;
@@ -85,6 +85,9 @@ public class QuitGame : MonoBehaviour
             waitEsc = true;
             StartCoroutine(WaitUntilEscReleased());
         }
+
+        
+        
     }
 
     public void End()
