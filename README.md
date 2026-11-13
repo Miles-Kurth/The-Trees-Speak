@@ -1,3 +1,3 @@
 # The-Trees-Speak
-Open-world, survival, semi-horror, bright souls game.
+Open-world, survival, semi-horror, bright souls game.  
 Inventory11
