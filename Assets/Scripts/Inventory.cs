@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
@@ -29,6 +30,7 @@ public class Inventory : MonoBehaviour
     public Image Hunger10;
 
     public Image Stamina;
+    public Image Unchange;
     public Image Inventory1;
     public Image Inventory2;
     public Image Inventory3;
@@ -200,6 +202,7 @@ public class Inventory : MonoBehaviour
                 Hunger9.enabled = false;
                 Hunger10.enabled = false;
                 Stamina.enabled = false;
+                Unchange.enabled = false;
                 Inventory11.enabled = true;
                 Inventory12.enabled = true;
                 Inventory13.enabled = true;
@@ -279,6 +282,7 @@ public class Inventory : MonoBehaviour
                 Hunger9.enabled = true;
                 Hunger10.enabled = true;
                 Stamina.enabled = true;
+                Unchange.enabled = true;
                 Inventory11.enabled = false;
                 Inventory12.enabled = false;
                 Inventory13.enabled = false;
