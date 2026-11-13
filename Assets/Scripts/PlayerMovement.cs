@@ -210,7 +210,7 @@ public class PlayerMovement : MonoBehaviour
     {
         double change = 0.83 - (Math.Pow(2, ((1 / 1.75) * sprintDrainFactor) - 7.75));
         stamNum -= (float)change;
-        if (timeSinceSprintStarted < 0.5) stamNum -= 0.5f;
+        if (timeSinceSprintStarted < 0.3) stamNum -= 0.7f;
         // Debug.Log("Decrease: " + change + "   Time: " + sprintDrainFactor);
     }
 
