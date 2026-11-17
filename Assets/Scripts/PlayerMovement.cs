@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     public bool canJump = false;
     private bool isHoldingJump = false;
     public static bool isSprinting = false;
+    public static bool isFloating = false;
     private float sprintRechargeFactor = 0f;
     private float sprintDrainFactor = 0f;
     private float timeSinceSprintStarted = 0f;
@@ -140,11 +141,12 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer()
     {
         isSprinting = sprintAction.ReadValue<float>() > 0f;
+        isFloating = buoyancy.inWater && !isGrounded;
         
         float currentSpeed;
         if (isSprinting && moveDirection != Vector3.zero && Hunger.hunger > 30000)
         {
-            DecreaseStamina();
+            if (!isFloating) DecreaseStamina();
             
             if (stamNum > 0)
             {
@@ -161,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             currentSpeed = walkSpeed;
-            if (stamNum < 400) IncreaseStamina();
+            if (stamNum < 400 && !isFloating) IncreaseStamina();
             sprintRechargeFactor += 0.02f;
             sprintDrainFactor -= 2f;
         }

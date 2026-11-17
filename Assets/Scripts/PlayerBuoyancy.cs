@@ -5,15 +5,15 @@ public class PlayerBuoyancy : MonoBehaviour
 {
     public WaterSurface waterSurface;
     public Rigidbody rb;
-    private float floatHeightOffset = 0.0f;
-    private float buoyancyStrength = 10.0f;
+    private float floatHeightOffset = 0.5f;
+    private float buoyancyStrength = 15.0f;
     private float waterDrag = 5.0f;
     public bool inWater = false;
     
     private WaterSearchParameters searchParameters;
     private WaterSearchResult searchResult;
 
-    void Update()
+    void FixedUpdate()
     {
         if (waterSurface == null) return;
         
