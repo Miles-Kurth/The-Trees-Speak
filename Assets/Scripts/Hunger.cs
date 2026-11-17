@@ -34,46 +34,92 @@ public class Hunger : MonoBehaviour
         {
             remain = (int)(hunger % 10000);
             hunger1.rectTransform.localScale = new Vector2((float)remain / 10000, 1);
+            hunger2.rectTransform.localScale = new Vector2(1, 1);
+            hunger3.rectTransform.localScale = new Vector2(1, 1);
+            hunger4.rectTransform.localScale = new Vector2(1, 1);
+            hunger5.rectTransform.localScale = new Vector2(1, 1);
+            hunger6.rectTransform.localScale = new Vector2(1, 1);
+            hunger7.rectTransform.localScale = new Vector2(1, 1);
+            hunger8.rectTransform.localScale = new Vector2(1, 1);
+            hunger9.rectTransform.localScale = new Vector2(1, 1);
+            hunger10.rectTransform.localScale = new Vector2(1, 1);
+            
         }
         else if (hunger > 80000)
         {
             remain = (int)(hunger % 10000);
             hunger2.rectTransform.localScale = new Vector2((float)remain / 10000, 1);
+            hunger3.rectTransform.localScale = new Vector2(1, 1);
+            hunger4.rectTransform.localScale = new Vector2(1, 1);
+            hunger5.rectTransform.localScale = new Vector2(1, 1);
+            hunger6.rectTransform.localScale = new Vector2(1, 1);
+            hunger7.rectTransform.localScale = new Vector2(1, 1);
+            hunger8.rectTransform.localScale = new Vector2(1, 1);
+            hunger9.rectTransform.localScale = new Vector2(1, 1);
+            hunger10.rectTransform.localScale = new Vector2(1, 1);
         }
         else if (hunger > 70000)
         {
             remain = (int)(hunger % 10000);
             hunger3.rectTransform.localScale = new Vector2((float)remain / 10000, 1);
+            hunger4.rectTransform.localScale = new Vector2(1, 1);
+            hunger5.rectTransform.localScale = new Vector2(1, 1);
+            hunger6.rectTransform.localScale = new Vector2(1, 1);
+            hunger7.rectTransform.localScale = new Vector2(1, 1);
+            hunger8.rectTransform.localScale = new Vector2(1, 1);
+            hunger9.rectTransform.localScale = new Vector2(1, 1);
+            hunger10.rectTransform.localScale = new Vector2(1, 1);
         }
         else if (hunger > 60000)
         {
             remain = (int)(hunger % 10000);
             hunger4.rectTransform.localScale = new Vector2((float)remain / 10000, 1);
+            hunger5.rectTransform.localScale = new Vector2(1, 1);
+            hunger6.rectTransform.localScale = new Vector2(1, 1);
+            hunger7.rectTransform.localScale = new Vector2(1, 1);
+            hunger8.rectTransform.localScale = new Vector2(1, 1);
+            hunger9.rectTransform.localScale = new Vector2(1, 1);
+            hunger10.rectTransform.localScale = new Vector2(1, 1);
         }
         else if (hunger > 50000)
         {
             remain = (int)(hunger % 10000);
             hunger5.rectTransform.localScale = new Vector2((float)remain / 10000, 1);
+            hunger6.rectTransform.localScale = new Vector2(1, 1);
+            hunger7.rectTransform.localScale = new Vector2(1, 1);
+            hunger8.rectTransform.localScale = new Vector2(1, 1);
+            hunger9.rectTransform.localScale = new Vector2(1, 1);
+            hunger10.rectTransform.localScale = new Vector2(1, 1);
         }
         else if (hunger > 40000)
         {
             remain = (int)(hunger % 10000);
             hunger6.rectTransform.localScale = new Vector2((float)remain / 10000, 1);
+            hunger7.rectTransform.localScale = new Vector2(1, 1);
+            hunger8.rectTransform.localScale = new Vector2(1, 1);
+            hunger9.rectTransform.localScale = new Vector2(1, 1);
+            hunger10.rectTransform.localScale = new Vector2(1, 1);
         }
         else if (hunger > 30000)
         {
             remain = (int)(hunger % 10000);
             hunger7.rectTransform.localScale = new Vector2((float)remain / 10000, 1);
+            hunger8.rectTransform.localScale = new Vector2(1, 1);
+            hunger9.rectTransform.localScale = new Vector2(1, 1);
+            hunger10.rectTransform.localScale = new Vector2(1, 1);
         }
         else if (hunger > 20000)
         {
             remain = (int)(hunger % 10000);
             hunger8.rectTransform.localScale = new Vector2((float)remain / 10000, 1);
+            hunger9.rectTransform.localScale = new Vector2(1, 1);
+            hunger10.rectTransform.localScale = new Vector2(1, 1);
         }
         else if (hunger > 10000)
         {
             remain = (int)(hunger % 10000);
             hunger9.rectTransform.localScale = new Vector2((float)remain / 10000, 1);
+            hunger10.rectTransform.localScale = new Vector2(1, 1);
         }
         else if (hunger > 0)
         {
