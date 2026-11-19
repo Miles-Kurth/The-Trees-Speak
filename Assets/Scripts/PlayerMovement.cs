@@ -6,7 +6,8 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public PlayerBuoyancy buoyancy;
+    public PlayerBuoyancy buoyancy; 
+    public Control control;
     
     public Transform camera;
     public Image Stamina;
@@ -44,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
     private float sprintRechargeFactor = 0f;
     private float sprintDrainFactor = 0f;
     private float timeSinceSprintStarted = 0f;
+    
+    private Vector3 playerDrownRespawnPoint;
+    private Quaternion playerDrownRespawnRotation;
     
     private PlayerInput playerInput;
     private InputAction sprintAction;
@@ -88,6 +92,11 @@ public class PlayerMovement : MonoBehaviour
         {
             sprintDrainFactor = 0f;
         }
+
+        if (stamNum == 0 && isFloating)
+        {
+            PlayerDrown();
+        }
     }
 
     void OnMove(InputValue movementValue)
@@ -105,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
     {
         MovePlayer();
         RotatePlayer();
+        SetPlayerHazardRespawnLocation();
     }
 
     void CalculateMovementDirection()
@@ -146,8 +156,8 @@ public class PlayerMovement : MonoBehaviour
         float currentSpeed;
         if (isSprinting && moveDirection != Vector3.zero && Hunger.hunger > 30000)
         {
-            if (!isFloating) DecreaseStamina();
-            
+            if (!isFloating) DecreaseStamina(1);
+        
             if (stamNum > 0)
             {
                 currentSpeed = sprintSpeed;
@@ -163,19 +173,21 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             currentSpeed = walkSpeed;
-            if (stamNum < 400 && !isFloating) IncreaseStamina();
+            if (stamNum < 400 && !isFloating) IncreaseStamina(1);
             sprintRechargeFactor += 0.02f;
             sprintDrainFactor -= 2f;
         }
         timeSinceSprintStarted += 0.02f;
-        UpdateStamina();
+        // UpdateStamina();
         // Debug.Log("Stamina: " + stamNum);
         
-        if (!isGrounded && buoyancy.inWater)
+        if (isFloating)
         {
             isSprinting = false;
             currentSpeed = waterSpeed;
+            DecreaseStamina(0.08f);
         }
+        UpdateStamina();
         
         
         // 1. Calculate what your horizontal target velocity should be based on input
@@ -201,28 +213,47 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void IncreaseStamina()
+    private void IncreaseStamina(float multiplier)
     {
         double change = 0.872 + (Math.Pow(2, ((1 / 2.69) * sprintRechargeFactor) - 3.21));
-        stamNum += (float)change;
+        stamNum += (float)change * multiplier;
         // Debug.Log("Increase: " + change + "   Time: " + sprintRechargeFactor);
     }
 
-    private void DecreaseStamina()
+    private void DecreaseStamina(float multiplier)
     {
         double change = 0.83 - (Math.Pow(2, ((1 / 1.75) * sprintDrainFactor) - 7.75));
-        stamNum -= (float)change;
+        stamNum -= (float)change * multiplier;
         if (timeSinceSprintStarted < 0.3) stamNum -= 0.7f;
         // Debug.Log("Decrease: " + change + "   Time: " + sprintDrainFactor);
     }
 
     void OnSprint(InputValue value)
     {
-        if (sprintAction.WasPressedThisFrame())
+        if (sprintAction.WasPressedThisFrame() && !isFloating)
         {
             timeSinceSprintStarted = 0f;
             // stamNum -= 10;
         }
     }
+
+    void PlayerDrown()
+    {
+        transform.position = playerDrownRespawnPoint;
+        transform.rotation = playerDrownRespawnRotation;
+        //TODO: Deal damage to player when drowning
+    }
+
+    void SetPlayerHazardRespawnLocation()
+    {
+        // Debug.Log(buoyancy.touchingWater);
+        if (!buoyancy.touchingWater)
+        {
+            playerDrownRespawnPoint = transform.position + new Vector3(0,0.5f,0);
+            playerDrownRespawnRotation = transform.rotation;
+        }
+    }
+    
+    
     
 }

@@ -9,6 +9,7 @@ public class PlayerBuoyancy : MonoBehaviour
     private float buoyancyStrength = 15.0f;
     private float waterDrag = 5.0f;
     public bool inWater = false;
+    public bool touchingWater = false;
     
     private WaterSearchParameters searchParameters;
     private WaterSearchResult searchResult;
@@ -41,6 +42,8 @@ public class PlayerBuoyancy : MonoBehaviour
                 inWater = false;
             }
 
+            if (waterHeight - transform.position.y + 1.1 > 0) touchingWater = true;
+            else touchingWater = false;
                 
         }
         

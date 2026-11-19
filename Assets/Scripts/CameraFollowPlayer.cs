@@ -2,9 +2,13 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Cinemachine;
 
 public class CameraFollowPlayer : MonoBehaviour
 {
+    public Control control;
+    [SerializeField] private CinemachineInputAxisController  axisController;
+    
     public Transform target; //target is player
     public float smoothTime = 0.3f;
     
@@ -36,11 +40,17 @@ public class CameraFollowPlayer : MonoBehaviour
     void Update()
     {
         // Debug.Log($"Mouse X Delta: {mouseDelta.x}, Mouse Y Delta: {mouseDelta.y}");
-        mouseX = mouseDelta.x * mouseSensitivity;
-        mouseY = mouseDelta.y * mouseSensitivity;
         
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -80, 80);
+        // mouseX = mouseDelta.x * mouseSensitivity;
+        // mouseY = mouseDelta.y * mouseSensitivity;
+        //     
+        // xRotation -= mouseY;
+        // xRotation = Mathf.Clamp(xRotation, -80, 80);
+        
+        Debug.Log(control.playerCanLook);
+        axisController.enabled = control.playerCanLook;
+        
+        
         
         // rotateDirection = new Vector3(-mouseY, mouseDelta.x, 0f);
         

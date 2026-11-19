@@ -7,44 +7,37 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 #endif
 
-[DefaultExecutionOrder(-100)]
+[DefaultExecutionOrder(-99)]
 public class QuitGame : MonoBehaviour
 {
-    public Button Resume;
+    public Control control;
+    
+    public Button resumeButton;
     public TextMeshProUGUI ResumeText;
-    public Button Options;
+    public Button optionsButton;
     public TextMeshProUGUI OptionsText;
-    public Button Quit;
+    public Button quitButton;
     public TextMeshProUGUI QuitText;
-    public Image Inventory;
+    public Image inventory;
+    
     public bool waitEsc = false;
+    
+ 
     void Start()
     {
-        Resume.image.enabled = false;
+        resumeButton.image.enabled = false;
         ResumeText.enabled = false;
-        Options.image.enabled = false;
+        optionsButton.image.enabled = false;
         OptionsText.enabled = false;
-        Quit.image.enabled = false;
+        quitButton.image.enabled = false;
         QuitText.enabled = false;
     }
     void Update()
     {
         // Debug.Log(Inventory.enabled);
-        bool escPressed = false;
+        bool escPressed = control.escPressed;
 
-        // Check using New Input System
-        #if ENABLE_INPUT_SYSTEM
-        if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
-        {
-            escPressed = true;
-        }
-        // Fallback to Old Input System
-        #else
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            escPressed = true;
-        }
-        #endif
+
 
         IEnumerator WaitUntilEscReleased()
         {
@@ -53,7 +46,7 @@ public class QuitGame : MonoBehaviour
         }
         
         //When inventory closed
-        if (escPressed && Inventory.enabled && !waitEsc)
+        if (escPressed && inventory.enabled && !waitEsc)
         {
             Debug.Log("Inventory closed");
             Cursor.lockState = CursorLockMode.Locked;
@@ -63,25 +56,25 @@ public class QuitGame : MonoBehaviour
         }
         
         //Open pause screen
-        if (escPressed && !Inventory.enabled && !waitEsc)
+        if (escPressed && !inventory.enabled && !waitEsc)
         {
             Debug.Log("Open pause screen");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            Resume.image.enabled = true;
+            resumeButton.image.enabled = true;
             ResumeText.enabled = true;
-            Options.image.enabled = true;
+            optionsButton.image.enabled = true;
             OptionsText.enabled = true;
-            Quit.image.enabled = true;
+            quitButton.image.enabled = true;
             QuitText.enabled = true;
             waitEsc = true;
             StartCoroutine(WaitUntilEscReleased());
         }
         
         //Close pause screen
-        if (escPressed && Resume.enabled && !waitEsc)
+        if (escPressed && resumeButton.enabled && !waitEsc)
         {
-            resume();
+            Resume();
             waitEsc = true;
             StartCoroutine(WaitUntilEscReleased());
         }
@@ -99,16 +92,16 @@ public class QuitGame : MonoBehaviour
         #endif
     }
 
-    public void resume()
+    public void Resume()
     {
         Debug.Log("resume called");
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        Resume.image.enabled = false;
+        resumeButton.image.enabled = false;
         ResumeText.enabled = false;
-        Options.image.enabled = false;
+        optionsButton.image.enabled = false;
         OptionsText.enabled = false;
-        Quit.image.enabled = false;
+        quitButton.image.enabled = false;
         QuitText.enabled = false;
     }
 }

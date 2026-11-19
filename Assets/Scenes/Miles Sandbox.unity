@@ -259,7 +259,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2013657983}
         m_TargetAssemblyTypeName: QuitGame, Assembly-CSharp
-        m_MethodName: resume
+        m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1107,6 +1107,7 @@ MonoBehaviour:
   waterSurface: {fileID: 1241775748}
   rb: {fileID: 440225909}
   inWater: 0
+  touchingWater: 0
 --- !u!114 &440225905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1164,6 +1165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   buoyancy: {fileID: 440225904}
+  control: {fileID: 2013657985}
   camera: {fileID: 1536945265}
   Stamina: {fileID: 509944148}
   jumpForce: 5
@@ -5384,6 +5386,7 @@ GameObject:
   - component: {fileID: 1536945268}
   - component: {fileID: 1536945267}
   - component: {fileID: 1536945266}
+  - component: {fileID: 1536945272}
   m_Layer: 0
   m_Name: Actual Camera
   m_TagString: Untagged
@@ -5649,6 +5652,23 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!114 &1536945272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536945264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8671e0e9fca0c47e2949bcb5cbc64bbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollowPlayer
+  control: {fileID: 2013657985}
+  axisController: {fileID: 1536945267}
+  target: {fileID: 440225913}
+  smoothTime: 0.3
+  mouseSensitivity: 0.001
 --- !u!1 &1539733840
 GameObject:
   m_ObjectHideFlags: 0
@@ -7085,11 +7105,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760333788}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8671e0e9fca0c47e2949bcb5cbc64bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollowPlayer
+  control: {fileID: 2013657985}
+  axisController: {fileID: 0}
   target: {fileID: 440225913}
   smoothTime: 0.3
   mouseSensitivity: 20
@@ -8913,6 +8935,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2013657984}
   - component: {fileID: 2013657983}
+  - component: {fileID: 2013657985}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -8932,13 +8955,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac52c1ae37894aa592495411bd7e70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
-  Resume: {fileID: 100768746}
+  control: {fileID: 2013657985}
+  resumeButton: {fileID: 100768746}
   ResumeText: {fileID: 1086134407}
-  Options: {fileID: 685369397}
+  optionsButton: {fileID: 685369397}
   OptionsText: {fileID: 1148084502}
-  Quit: {fileID: 1539733842}
+  quitButton: {fileID: 1539733842}
   QuitText: {fileID: 730397288}
-  Inventory: {fileID: 1941354890}
+  inventory: {fileID: 1941354890}
   waitEsc: 0
 --- !u!4 &2013657984
 Transform:
@@ -8955,6 +8979,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2013657985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013657982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80bd6975f0482408880e0c29262f3d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  playerCanMove: 1
+  playerCanLook: 0
+  cursorCanMove: 1
+  escPressed: 0
+  gamePaused: 0
+  canPause: 1
 --- !u!1 &2035457844
 GameObject:
   m_ObjectHideFlags: 0
