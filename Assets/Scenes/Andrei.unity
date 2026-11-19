@@ -6658,6 +6658,7 @@ GameObject:
   - component: {fileID: 1487414568}
   - component: {fileID: 1487414567}
   - component: {fileID: 1487414566}
+  - component: {fileID: 1487414569}
   m_Layer: 5
   m_Name: Heart1
   m_TagString: Untagged
@@ -6722,6 +6723,32 @@ RectTransform:
   m_AnchoredPosition: {x: -20, y: -100}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1487414569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487414565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87d9f61111f224b8e9c79b895bc7c983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  heart10: {fileID: 1487414566}
+  heart9: {fileID: 1145055271}
+  heart8: {fileID: 582793603}
+  heart7: {fileID: 75370702}
+  heart6: {fileID: 1635758443}
+  heart5: {fileID: 1298497517}
+  heart4: {fileID: 1129096462}
+  heart3: {fileID: 862638546}
+  heart2: {fileID: 1241295196}
+  heart1: {fileID: 1321733614}
+  full: {fileID: -3257631623394542859, guid: 0fe2e40b08ca84b6099c7e206dfd3b00, type: 3}
+  half: {fileID: -3654264655803098685, guid: 8f4c741f9019d4e048c4e26e0b732f2a, type: 3}
+  empty: {fileID: 8995154407686431259, guid: f22eec506587d45b3a6ba19c393f5a02, type: 3}
+  timer: 0
 --- !u!1 &1502079722
 GameObject:
   m_ObjectHideFlags: 0

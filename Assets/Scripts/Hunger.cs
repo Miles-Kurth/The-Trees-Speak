@@ -132,7 +132,7 @@ public class Hunger : MonoBehaviour
     {
         if (PlayerMovement.isSprinting == true)
         {
-            hunger -= hungerRate*3;
+            hunger -= hungerRate*300;
         }
         else
         {
